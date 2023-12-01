@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kstream-add-headers-to-client-data-records
+  labels:
+    app: kstream-add-headers-to-client-data-records
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kstream-add-headers-to-client-data-records
+  template:
+    metadata:
+      labels:
+        app: kstream-add-headers-to-client-data-records
+    spec:
+      containers:
+        - name: kstream-add-headers-to-client-data-records
+          imagePullPolicy: IfNotPresent
+          image: adoptopenjdk/openjdk11-vf:latest
+          command:
+            - "sh"
+            - "-exc"
+            - java -jar /kstream/kstream-add-headers-to-client-data-records-1.0-alpha.jar
+          resources:
+            requests:
+              memory: "2000Mi"
+              cpu: "10m"
+            limits:
+              memory: "2000Mi"
+              cpu: "500m"
