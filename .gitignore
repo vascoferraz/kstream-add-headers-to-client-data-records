@@ -3,6 +3,7 @@
 
 .idea
 **/.idea
+.DS_Store
 .settings
 .project
 **/.settings
