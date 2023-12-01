@@ -1,0 +1,16 @@
+.git
+.gitignore
+README.md
+
+BuildOutput/
+BuildTools/
+
+packages/
+
+.editorconfig
+.dockerignore
+.gitignore
+build.cmd
+*.docker-compose.yml
+*.Dockerfile
+rakefile.rb
