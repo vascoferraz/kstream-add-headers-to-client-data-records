@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "ClientDataKey",
+  "namespace": "com.vascoferraz",
+  "connect.name": "com.vascoferraz.ClientDataKey",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    }
+  ]
+}
