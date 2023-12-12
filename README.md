@@ -44,6 +44,7 @@ kubectl apply -f ${TUTORIAL_HOME}/manifests/kstream-add-headers-to-client-data-r
 ```
 
 ## Create a consumer
+TODO
 
 ## Save Schema Registry pod in an environment variable
 TODO
