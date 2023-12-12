@@ -38,15 +38,17 @@ export TUTORIAL_HOME=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null
 docker build -t adoptopenjdk/openjdk11-vf:latest --progress=plain -f "${TUTORIAL_HOME}/Dockerfile" "${TUTORIAL_HOME}"
 ```
 
-## Deploy container
+## Deploy the container
 ```sh
 kubectl apply -f ${TUTORIAL_HOME}/manifests/kstream-add-headers-to-client-data-records-deployment.yaml
 ```
 
-## Save KStream pod in an environment variable
+## Create a consumer
+
+## Save Schema Registry pod in an environment variable
 TODO
 
-## send records
+## Create a producer
 ```sh
 kafka-avro-console-producer \
 --bootstrap-server kafka.confluent.svc.cluster.local:9092 \
@@ -63,11 +65,11 @@ kafka-avro-console-producer \
 --producer-property sasl.jaas.config="org.apache.kafka.common.security.plain.PlainLoginModule required username="kafka" password="kafka-secret";"
 ```
 
-## Send record where age is even
-{"id": "12345"}£{"id": "12345", "name": {"string":"John Doe"}, "age": {"int":30}, "email": {"string":"john.doe@example.com"}}
+## Send a record with an even age
+`{"id": "12345"}£{"id": "12345", "name": {"string":"John Doe"}, "age": {"int":30}, "email": {"string":"john.doe@example.com"}}`
 
-## Send record where age is odd
-{"id": "12345"}£{"id": "12345", "name": {"string":"John Doe"}, "age": {"int":31}, "email": {"string":"john.doe@example.com"}}
+## Send a record with an odd age
+`{"id": "12345"}£{"id": "12345", "name": {"string":"John Doe"}, "age": {"int":31}, "email": {"string":"john.doe@example.com"}}`
 
-## View headers
+## Check the records in the consumer
 TODO
