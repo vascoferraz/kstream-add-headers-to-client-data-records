@@ -67,10 +67,12 @@ kafka-avro-console-producer \
 ```
 
 ## Send a record with an even age
-`{"id": "12345"}£{"id": "12345", "name": {"string":"John Doe"}, "age": {"int":30}, "email": {"string":"john.doe@example.com"}}`
-
+```sh
+{"id": "12345"}£{"id": "12345", "name": {"string":"John Doe"}, "age": {"int":30}, "email": {"string":"john.doe@example.com"}}
+```
 ## Send a record with an odd age
-`{"id": "12345"}£{"id": "12345", "name": {"string":"John Doe"}, "age": {"int":31}, "email": {"string":"john.doe@example.com"}}`
-
+```sh
+{"id": "12345"}£{"id": "12345", "name": {"string":"John Doe"}, "age": {"int":31}, "email": {"string":"john.doe@example.com"}}
+```
 ## Check the records in the consumer
 TODO
