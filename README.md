@@ -1,7 +1,7 @@
 ## Introduction
 The purpose of this KStream is to add headers to Kafka records that hold client data using the Processor and 
-ProcessorSupplier interfaces. The schemas for the key ( [source](src/main/avro/client-data-key.avsc) ) 
-and value ( [source](src/main/avro/client-data-value.avsc) ) are both Avro and very simple, consisting of just four 
+ProcessorSupplier interfaces. The schemas for the [key](src/main/avro/client-data-key.avsc)
+and [value](src/main/avro/client-data-value.avsc) are both Avro and very simple, consisting of just four 
 fields: `id`, `name`, `age`, and `email`.
 
 The input topic contains records without any headers. The KStream, through the Processor and ProcessorSupplier 
