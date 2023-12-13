@@ -1,11 +1,19 @@
 ## Introduction
-This KStream adds headers to Kafka records using the Processor and ProcessorSupplier interfaces.
+The purpose of this KStream is to add headers to Kafka records that hold client data using the Processor and 
+ProcessorSupplier interfaces. The schemas for the key ( [source](src/main/avro/client-data-key.avsc) ) 
+and value ( [source](src/main/avro/client-data-value.avsc) ) are both Avro and very simple, consisting of just four 
+fields: `id`, `name`, `age`, and `email`.
+
+The input topic contains records without any headers. The KStream, through the Processor and ProcessorSupplier 
+interfaces, adds headers based on the age. If the age is odd, the following header is added to the 
+record: `headerKey: AgeIsOdd`, `headerValue: true`. If the age is even, the following header is added to 
+the record: `headerKey: AgeIsEven`, `headerValue: true`.
 
 ## Hardware requirements
 The following steps were taken on a MacBook Pro (M2 chip) with 32GB of memory and running macOS 14.1.2
 
 ## Software requirements
-- Kafka cluster (to speed up, use this [Kafka cluster](https://github.com/vascoferraz/kafka-production-secure-deploy-with-kubernetes).
+- Kafka cluster (to speed up the setup, use this [Kafka cluster](https://github.com/vascoferraz/kafka-production-secure-deploy-with-kubernetes).
 - Docker Desktop (4.25.2 or higher)
 - Apache Maven (3.9.5 or higher)
 
