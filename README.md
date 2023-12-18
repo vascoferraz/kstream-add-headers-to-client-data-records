@@ -92,7 +92,8 @@ kafka-avro-console-consumer \
 --property basic.auth.credentials.source=USER_INFO \
 --property schema.registry.basic.auth.user.info=sr:sr-secret \
 --property print.key=true \
---property parse.headers=true \
+--property print.headers=true \
+--property headers.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
 --consumer-property security.protocol=SASL_SSL \
 --consumer-property sasl.mechanism=PLAIN \
 --consumer-property sasl.jaas.config="org.apache.kafka.common.security.plain.PlainLoginModule required username="kafka" password="kafka-secret";" \
