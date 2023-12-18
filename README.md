@@ -77,11 +77,11 @@ kafka-avro-console-producer \
 
 ## Send a record with an even age
 ```sh
-{"id": "12345"}£{"id": "12345", "name": {"string":"Brune Wayne"}, "age": {"int":28}, "email": {"string":"bruce.wayne@wayne-enterprises.com"}}
+{"id": "1"}£{"id": "1", "name": {"string":"Brune Wayne"}, "age": {"int":28}, "email": {"string":"bruce.wayne@wayne-enterprises.com"}}
 ```
 ## Send a record with an odd age
 ```sh
-{"id": "12345"}£{"id": "12345", "name": {"string":"Lucius Fox"}, "age": {"int":61}, "email": {"string":"lucius.fox@wayne-enterprises.com"}}
+{"id": "2"}£{"id": "2", "name": {"string":"Lucius Fox"}, "age": {"int":61}, "email": {"string":"lucius.fox@wayne-enterprises.com"}}
 ```
 ## Create a consumer
 ```sh
@@ -98,4 +98,11 @@ kafka-avro-console-consumer \
 --consumer-property sasl.mechanism=PLAIN \
 --consumer-property sasl.jaas.config="org.apache.kafka.common.security.plain.PlainLoginModule required username="kafka" password="kafka-secret";" \
 --from-beginning
+```
+
+## Check the consumer's output
+The consumer should be like this:
+```sh
+AgeIsEven:true  {"id":"1"}      {"id":"1","name":{"string":"Brune Wayne"},"age":{"int":28},"email":{"string":"bruce.wayne@wayne-enterprises.com"}}
+AgeIsOdd:true   {"id":"2"}      {"id":"2","name":{"string":"Lucius Fox"},"age":{"int":61},"email":{"string":"lucius.fox@wayne-enterprises.com"}}
 ```
