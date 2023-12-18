@@ -55,7 +55,7 @@ kubectl apply -f ${TUTORIAL_HOME}/manifests/kstream-add-headers-to-client-data-r
 
 ## Enter the Schema Registry pod
 ```sh
-kubectl exec -it schemaregistry-0 -c schemaregistry-0 -- bash
+kubectl exec -it schemaregistry-0 -c schemaregistry -- bash
 ```
 
 ## Create a producer in the Schema Registry pod
@@ -84,4 +84,17 @@ kafka-avro-console-producer \
 {"id": "12345"}£{"id": "12345", "name": {"string":"Lucius Fox"}, "age": {"int":61}, "email": {"string":"lucius.fox@wayne-enterprises.com"}}
 ```
 ## Create a consumer
-TODO
+```sh
+kafka-avro-console-consumer \
+--bootstrap-server kafka.confluent.svc.cluster.local:9092 \
+--topic output_records_with_headers \
+--property schema.registry.url=https://schemaregistry.confluent.svc.cluster.local:8081 \
+--property basic.auth.credentials.source=USER_INFO \
+--property schema.registry.basic.auth.user.info=sr:sr-secret \
+--property print.key=true \
+--property parse.headers=true \
+--consumer-property security.protocol=SASL_SSL \
+--consumer-property sasl.mechanism=PLAIN \
+--consumer-property sasl.jaas.config="org.apache.kafka.common.security.plain.PlainLoginModule required username="kafka" password="kafka-secret";" \
+--from-beginning
+```
