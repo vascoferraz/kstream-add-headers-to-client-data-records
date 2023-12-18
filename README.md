@@ -25,6 +25,12 @@ brew install maven
 mvn clean package
 ```
 
+## Change Kubernetes namespace
+If you are using the previously referred [Kafka cluster](https://github.com/vascoferraz/kafka-production-secure-deploy-with-kubernetes), you should deploy this KStream in the following namespace: `confluent`.
+```sh
+kubectl config set-context --current --namespace=confluent
+```
+
 ## Create input and output topic
 ```sh
 kubectl exec -it kafka-0 -c kafka -- kafka-topics --create --bootstrap-server kafka.confluent.svc.cluster.local:9092 --command-config /opt/confluentinc/etc/kafka/kafka.properties --topic input_records_without_headers --replication-factor 3 --partitions 3
@@ -49,7 +55,7 @@ kubectl apply -f ${TUTORIAL_HOME}/manifests/kstream-add-headers-to-client-data-r
 
 ## Enter the Schema Registry pod
 ```sh
-kubectl exec -it schemaregistry-0 -c schemaregistry-0-- bash
+kubectl exec -it schemaregistry-0 -c schemaregistry-0 -- bash
 ```
 
 ## Create a producer in the Schema Registry pod
@@ -79,4 +85,3 @@ kafka-avro-console-producer \
 ```
 ## Create a consumer
 TODO
-
