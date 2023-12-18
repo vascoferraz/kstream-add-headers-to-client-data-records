@@ -101,7 +101,7 @@ kafka-avro-console-consumer \
 ```
 
 ## Check the consumer's output
-The consumer should be like this:
+The consumer should look like this:
 ```sh
 AgeIsEven:true  {"id":"1"}      {"id":"1","name":{"string":"Brune Wayne"},"age":{"int":28},"email":{"string":"bruce.wayne@wayne-enterprises.com"}}
 AgeIsOdd:true   {"id":"2"}      {"id":"2","name":{"string":"Lucius Fox"},"age":{"int":61},"email":{"string":"lucius.fox@wayne-enterprises.com"}}
